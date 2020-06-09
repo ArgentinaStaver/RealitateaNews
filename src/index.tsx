@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import { store } from './store/configureStore';
 import * as serviceWorker from './serviceWorker';
+import NewsList from './containers/NewsList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Route path='/' exact component={NewsList} />
+        </div>        
+      </Router>       
+    </Provider>   
   </React.StrictMode>,
   document.getElementById('root')
 );
